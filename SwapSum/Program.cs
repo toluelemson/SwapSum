@@ -8,17 +8,36 @@ namespace SwapSum
     {
         static void Main(string[] args)
         {
-            List<int> list = new List<int> { 1, 2, 3 };
+            List<int> list = new List<int> { 7,1,8 };
             PairWise(list);
         }
         static void PairWise(List<int> list)
         {
             List<int> result = new List<int>();
-            for (int i = 0; i <= list.Count - 3; i++)
+          
+            List<int> pair;
+
+            if (list.Count == 1)
             {
-                List<int> pair = new List<int> { list[i], list[i+1], list[i+2] };
-                var maxSum = MaxSum(pair);
-                result.Add(maxSum);
+
+                result.Add(list[0]);
+            }
+            else if (list.Count == 2)
+            {
+               
+                result.Add(list[0] + list[1]);
+            }
+            else
+            {
+                for (int i = 0; i <= list.Count - 3; i++)
+                {
+
+                    pair = new List<int> { list[i], list[i + 1], list[i + 2] };
+
+                    var maxSum = MaxSum(pair);
+                    result.Add(maxSum);
+                }
+               
             }
             var maximixedPair = result.Sum();
             Console.WriteLine("total sum should be maximized:" + maximixedPair);
